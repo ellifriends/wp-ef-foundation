@@ -44,6 +44,6 @@ if ( ! function_exists( 'mix' ) ) {
 			return $dir . $manifest[$path];
 		}
 
-		return $dir . $path;
+		return asset( $path );
 	}
 }
