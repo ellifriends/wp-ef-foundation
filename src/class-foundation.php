@@ -11,7 +11,7 @@ final class Foundation {
 	private static $instance;
 
 	/**
-	 * Get Plugin boilerplate loader instance.
+	 * Get foundation instance.
 	 *
 	 * @return object
 	 */
