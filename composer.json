@@ -1,6 +1,6 @@
 {
   "name": "ellifriends/wp-ef-foundation",
-  "type": "wordpress-plugin",
+  "type": "wordpress-muplugin",
   "license": "MIT",
   "description": "Elli & Friends Foundation Plugin",
   "homepage": "https://github.com/ellifriends/wp-ef-foundation",
