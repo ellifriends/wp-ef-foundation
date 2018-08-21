@@ -23,6 +23,7 @@
     <exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
     <!-- allow ['key' => $value] -->
     <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeKeyFound" />
+    <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
   </rule>
 
 
