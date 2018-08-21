@@ -2,8 +2,6 @@
 
 namespace EF\Foundation\Lib;
 
-use Normalizer;
-
 /**
  * Force perfect JPG images.
  *
@@ -21,9 +19,27 @@ add_filter( 'jpeg_quality', function () {
  * @return array
  */
 add_filter( 'wp_handle_upload_prefilter', function ( $file ) {
-	if ( ! Normalizer::isNormalized( $file['name'], Normalizer::FORM_C ) ) {
-		$file['name'] = Normalizer::normalize( $file['name'], Normalizer::FORM_C );
+	if ( ! is_array( $file ) && ! is_string( $file ) ) {
+		return $file;
 	}
+
+	if ( ! is_array( $file ) ) {
+		$file = [
+			'name' => $file,
+		];
+	}
+
+	$search   = [ '/[^a-zA-Z0-9 \.\&\/_-]+/', '/[ \.\&\/-]+/' ];
+	$replace  = [ '', '-' ];
+	$path     = pathinfo( $file['name'] );
+	$filename = preg_replace( '/.' . $path['extension'] . '$/', '', $file['name'] );
+	$filename = html_entity_decode( $filename, ENT_QUOTES, 'UTF-8' );
+	$filename = remove_accents( $filename );
+	$filename = preg_replace( $search, $replace, $filename );
+	$filename = trim( $filename, '-' );
+	$filename = strtolower( $filename );
+
+	$file['name'] = $filename . '.' . $path['extension'];
 
 	return $file;
 }, 1 );
