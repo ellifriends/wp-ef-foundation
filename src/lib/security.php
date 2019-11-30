@@ -16,7 +16,7 @@ add_filter( 'login_headerurl', function () {
  *
  * @return string
  */
-add_filter( 'login_headertitle', function () {
+add_filter( 'login_headertext', function () {
 	return get_bloginfo( 'blogname' );
 } );
 
